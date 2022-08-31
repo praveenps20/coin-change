@@ -58,6 +58,7 @@ public class DenominationUtil {
 				combination.add(num);
 				if (shortestCombination == null || shortestCombination.size() > combination.size()) {
 					shortestCombination = combination;
+					map.put(target, shortestCombination);
 				}
 			}
 		}

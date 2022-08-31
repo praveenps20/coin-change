@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Data class
  * 
  * @author Praveen
  *
@@ -42,15 +43,6 @@ public class CoinChangeData {
 		return list;
 	}
 
-	public static Map<Double, Integer> getCoinsCopy() {
-		Map<Double, Integer> map = getCoins();
-		Map<Double, Integer> copy = new HashMap<>();
-		for (Map.Entry<Double, Integer> entry : map.entrySet()) {
-			copy.put(entry.getKey(), entry.getValue());
-		}
-		return copy;
-	}
-
 	public static void adjust(List<Double> list) {
 		if (list == null || list.isEmpty()) {
 			return;
@@ -67,5 +59,17 @@ public class CoinChangeData {
 
 	public static void reset() {
 		coinMap = null;
+	}
+
+	public static void changeConfigurations(Map<Double, Integer> map) {
+		if (coinMap == null) {
+			coinMap = new HashMap<>();
+		} else {
+			coinMap.clear();
+		}
+
+		for (Map.Entry<Double, Integer> entry : map.entrySet()) {
+			coinMap.put(entry.getKey() * 100, entry.getValue());
+		}
 	}
 }
